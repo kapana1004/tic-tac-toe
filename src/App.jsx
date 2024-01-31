@@ -3,19 +3,26 @@ import Square from "./components/Square";
 import xImg from "./assets/Combined Shape Copy 2.png";
 import zeroImg from "./assets/Oval Copy.png";
 import smallX from "./assets/SmallX.png";
+import smallZero from "./assets/oval.png";
 import Rotate from "./assets/Rotate.png";
 
 function App() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const [turn, setTurn] = useState(
+    <img className="w-[16px] h-[16px]" src={smallX} alt="x" />
+  );
 
   function handleClick(i) {
     if (squares[i]) return;
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = <img className=" pl-[30px]" src={xImg} alt="X" />;
+
+      setTurn(<img className="w-[16px] h-[16px]" src={smallZero} alt="0" />);
     } else {
       nextSquares[i] = <img className=" pl-[30px]" src={zeroImg} alt="0" />;
+      setTurn(<img className="w-[16px] h-[16px]" src={smallX} alt="x" />);
     }
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
@@ -30,7 +37,8 @@ function App() {
         </div>
         <div className=" flex flex-row justify-around items-center w-[96px] h-[40px] rounded-[5px] bg-[#1F3641]">
           {" "}
-          <img className=" w-[16px] h-[16px]" src={smallX} alt="x" />
+          {/* <img className=" w-[16px] h-[16px]" src={smallX} alt="x" /> */}
+          <span>{turn}</span>
           <span className=" text-[#A8BFC9] text-[14px] font-bold"> TURN</span>
         </div>
         <div className=" flex justify-center items-center bg-[#A8BFC9] w-[40px] h-[40px] rounded-[5px]">
