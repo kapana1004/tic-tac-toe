@@ -32,6 +32,14 @@ function App() {
     if (winnerFound) {
       setWinner(winnerFound);
     }
+
+    setTurn(
+      xIsNext ? (
+        <img className="w-[16px] h-[16px]" src={smallZero} alt="x" />
+      ) : (
+        <img className="w-[16px] h-[16px]" src={smallX} alt="o" />
+      )
+    );
   };
 
   function defineWinner(squares) {
