@@ -26,6 +26,7 @@ function App() {
 
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
+    setTurn(turn);
 
     const winnerFound = defineWinner(nextSquares);
     if (winnerFound) {

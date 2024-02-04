@@ -9,7 +9,14 @@ export default function Entrygame({ start, setStart }) {
     setStart(!start);
   };
   return (
-    <div className=" flex flex-col justify-center items-center min-h-[100vh] bg-[#1A2A33] ">
+    <div
+      className={` ${
+        !start
+          ? `flex flex-col justify-center 
+    items-center min-h-[100vh] bg-[#1A2A33]`
+          : `hidden`
+      } `}
+    >
       <div className=" flex flex-row w-[72px] h-[32px] justify-between mb-[25px]">
         <img className=" w-[32px] h-[32px]" src={xImg} alt="X" />
         <img className=" w-[32px] h-[32px]" src={zeroImg} alt="O" />
