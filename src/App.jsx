@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Square from "./components/Square";
 import Entrygame from "./components/Entrygame";
+// import Computermove from "./components/Comutermove";
 import xImg from "./assets/Combined Shape Copy 2.png";
 import zeroImg from "./assets/Oval Copy.png";
 import smallX from "./assets/SmallX.png";
@@ -18,6 +19,8 @@ function App() {
   const [countX, setCountX] = useState(0);
   const [countO, setCountO] = useState(0);
   const [ties, setTies] = useState(0);
+  const [playerO, setPlayerO] = useState(null);
+  const [playerX, setPlayerX] = useState(null);
 
   const handleClick = (i) => {
     if (winner || squares[i]) {
@@ -94,11 +97,18 @@ function App() {
 
   return (
     <>
-      <Entrygame start={start} setStart={setStart} />
+      <Entrygame
+        start={start}
+        setStart={setStart}
+        playerO={playerO}
+        setPlayerO={setPlayerO}
+        playerX={playerX}
+        setPlayerX={setPlayerX}
+      />
       <div
         className={` ${
           start
-            ? `flex flex-col items-center min-h-[100vh] bg-[#1A2A33]`
+            ? `flex flex-col relative items-center min-h-[100vh] bg-[#1A2A33]`
             : `hidden`
         } `}
       >
@@ -137,7 +147,7 @@ function App() {
         </div>
         <div className="flex w-[328px] justify-between">
           <div className="flex flex-col items-center w-[96px] h-[64px] bg-[#31C3BD] rounded-[10px] justify-center">
-            <span className="text-[12px]">X (P2)</span>
+            <span className="text-[12px]">X {playerX}</span>
             <span className=" text-[20px] font-bold">{countX}</span>
           </div>
           <div className="flex flex-col items-center w-[96px] h-[64px] bg-[#A8BFC9] rounded-[10px] justify-center">
@@ -145,12 +155,37 @@ function App() {
             <span className=" text-[20px] font-bold">{ties}</span>
           </div>
           <div className="flex flex-col items-center w-[96px] h-[64px] bg-[#F2B137] rounded-[10px] justify-center">
-            <span className="text-[12px]">O (P1)</span>
+            <span className="text-[12px]">O {playerO}</span>
             <span className=" text-[20px] font-bold">{countO}</span>
           </div>
         </div>
-        <div>{winner ? <span>Winner: {winner}</span> : null}</div>
+        <div
+          className={`${
+            winner
+              ? `flex flex-col w-[375px] h-[228px] absolute top-[27%] bg-black`
+              : `hidden`
+          }`}
+        >
+          <span className=" text-white">Winner: {winner}</span>
+        </div>
       </div>
+      {/* {xIsNext && !winner && (
+        <Computermove
+          squares={squares}
+          setSquares={setSquares}
+          setXIsNext={setXIsNext}
+          setTurn={setTurn}
+          defineWinner={defineWinner}
+          winner={winner}
+          setWinner={setWinner}
+          countX={countX}
+          setCountX={setCountX}
+          countO={countO}
+          setCountO={setCountO}
+          ties={ties}
+          setTies={setTies}
+        />
+      )} */}
     </>
   );
 }

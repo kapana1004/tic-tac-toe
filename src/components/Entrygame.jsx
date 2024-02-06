@@ -4,9 +4,17 @@ import zeroImg from "../assets/Oval Copy.png";
 import smallX from "../assets/SmallX.png";
 import smallZero from "../assets/oval.png";
 
-export default function Entrygame({ start, setStart }) {
+export default function Entrygame({ start, setStart, setPlayerO, setPlayerX }) {
   const handleGameStart = () => {
     setStart(!start);
+  };
+  const handlePlayerXStart = () => {
+    setPlayerX("(P1)");
+    setPlayerO("(P2)");
+  };
+  const handlePlayerOStart = () => {
+    setPlayerX("(P2)");
+    setPlayerO("(P1)");
   };
   return (
     <div
@@ -27,10 +35,16 @@ export default function Entrygame({ start, setStart }) {
           PICK PLAYER 1’S MARK
         </span>
         <div className=" flex w-[279px] h-[72px] mt-[20px] bg-[#1A2A33] rounded-[10px] justify-around items-center ">
-          <div className=" flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#31C3BD] cursor-pointer ">
+          <div
+            onClick={handlePlayerXStart}
+            className=" flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#31C3BD] cursor-pointer "
+          >
             <img className=" w-[32px] h-[32px]" src={smallX} alt="x" />
           </div>
-          <div className=" flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#F2B137] cursor-pointer">
+          <div
+            onClick={handlePlayerOStart}
+            className=" flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#F2B137] cursor-pointer"
+          >
             <img className=" w-[32px] h-[32px]" src={smallZero} alt="" />
           </div>
         </div>
@@ -40,17 +54,17 @@ export default function Entrygame({ start, setStart }) {
         </span>
       </div>
 
-      <div className=" flex w-[327px] h-[56px] bg-[#F2B137] hover:bg-[#FFC860] cursor-pointer rounded-[10px] mt-[30px] justify-center items-center">
+      <button className=" flex w-[327px] h-[56px] bg-[#F2B137] hover:bg-[#FFC860] cursor-pointer rounded-[10px] mt-[30px] justify-center items-center">
         {" "}
         <span className=" font-bold">NEW GAME (VS CPU)</span>
-      </div>
-      <div
+      </button>
+      <button
         onClick={handleGameStart}
         className=" flex w-[327px] h-[56px] bg-[#31C3BD] hover:bg-[#65E9E4] cursor-pointer rounded-[10px] mt-[17px] justify-center items-center"
       >
         {" "}
         <span className=" font-bold">NEW GAME (VS PLAYER)</span>
-      </div>
+      </button>
     </div>
   );
 }
