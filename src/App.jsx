@@ -40,12 +40,8 @@ function App() {
     }
     if (winnerFound === "O") {
       setCountO(countO + 1);
-    } else if (
-      !winner &&
-      nextSquares.every((square) => square !== null) &&
-      !nextSquares.includes(null)
-    ) {
-      // Check for a tie only if there is no winner and the last square is filled
+    } else if (!winnerFound && nextSquares.every((square) => square !== null)) {
+      // Check for a tie only when all squares are filled and there is no winner
       setTies(ties + 1);
       setWinner("TIE"); // You can use any value to represent a tie in the state
     }
