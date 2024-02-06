@@ -15,6 +15,9 @@ function App() {
   );
   const [winner, setWinner] = useState(null);
   const [start, setStart] = useState(false);
+  const [countX, setCountX] = useState(0);
+  const [countO, setCountO] = useState(0);
+  const [ties, setTies] = useState(0);
 
   const handleClick = (i) => {
     if (winner || squares[i]) {
@@ -31,6 +34,12 @@ function App() {
     const winnerFound = defineWinner(nextSquares);
     if (winnerFound) {
       setWinner(winnerFound);
+    }
+    if (winnerFound === "X") {
+      setCountX(countX + 1);
+    }
+    if (winnerFound === "O") {
+      setCountO(countO + 1);
     }
 
     setTurn(
@@ -67,6 +76,17 @@ function App() {
 
     return null;
   }
+  function resetGame() {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
+    setTurn(<img className="w-[16px] h-[16px]" src={smallX} alt="x" />);
+    setWinner(null);
+  }
+
+  const handleStartGame = () => {
+    resetGame();
+    setStart(true);
+  };
 
   return (
     <>
@@ -87,7 +107,10 @@ function App() {
             <span>{turn}</span>
             <span className="text-[#A8BFC9] text-[14px] font-bold">TURN</span>
           </div>
-          <div className="flex justify-center items-center bg-[#A8BFC9] w-[40px] h-[40px] rounded-[5px]">
+          <div
+            onClick={handleStartGame}
+            className="flex justify-center items-center bg-[#A8BFC9] w-[40px] h-[40px] cursor-pointer rounded-[5px]"
+          >
             <img src={Rotate} alt="" />
           </div>
         </div>
@@ -109,14 +132,17 @@ function App() {
           </div>
         </div>
         <div className="flex w-[328px] justify-between">
-          <div className="flex w-[96px] h-[64px] bg-[#31C3BD] rounded-[10px] justify-center">
+          <div className="flex flex-col items-center w-[96px] h-[64px] bg-[#31C3BD] rounded-[10px] justify-center">
             <span className="text-[12px]">X (P2)</span>
+            <span className=" text-[20px] font-bold">{countX}</span>
           </div>
-          <div className="flex w-[96px] h-[64px] bg-[#A8BFC9] rounded-[10px] justify-center">
+          <div className="flex flex-col items-center w-[96px] h-[64px] bg-[#A8BFC9] rounded-[10px] justify-center">
             <span className="text-[12px]">TIES</span>
+            <span className=" text-[20px] font-bold">{ties}</span>
           </div>
-          <div className="flex w-[96px] h-[64px] bg-[#F2B137] rounded-[10px] justify-center">
+          <div className="flex flex-col items-center w-[96px] h-[64px] bg-[#F2B137] rounded-[10px] justify-center">
             <span className="text-[12px]">O (P1)</span>
+            <span className=" text-[20px] font-bold">{countO}</span>
           </div>
         </div>
         <div>{winner ? <span>Winner: {winner}</span> : null}</div>
