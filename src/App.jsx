@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Square from "./components/Square";
 import Entrygame from "./components/Entrygame";
+import Winneralarm from "./components/Winneralarm";
 // import Computermove from "./components/Comutermove";
 import xImg from "./assets/Combined Shape Copy 2.png";
 import zeroImg from "./assets/Oval Copy.png";
@@ -21,6 +22,9 @@ function App() {
   const [ties, setTies] = useState(0);
   const [playerO, setPlayerO] = useState(null);
   const [playerX, setPlayerX] = useState(null);
+  const [winnerX, setWinnerX] = useState(false);
+  const [winnerO, setWinnerO] = useState(false);
+  const [tieAlarm, setTieAlarm] = useState(false);
 
   const handleClick = (i) => {
     if (winner || squares[i]) {
@@ -36,19 +40,27 @@ function App() {
 
     const winnerFound = defineWinner(nextSquares);
     if (winnerFound) {
-      setWinner(winnerFound);
-    }
+      setWinner(playerX === "P1" ? "PLAYER 2 WINS!" : "PLAYER 1 WINS!");
+      console.log(playerX);
+    } // X როცა არის არჩეული player1-ად რატომ არენდერებს "PLAYER 1 WINS!"?
     if (winnerFound === "X") {
       setCountX(countX + 1);
-    }
-    if (winnerFound === "O") {
+      setWinnerX(true);
+      setWinnerO(false);
+    } else if (winnerFound === "O") {
       setCountO(countO + 1);
+      setWinnerO(true);
+      setWinnerX(false);
     } else if (!winnerFound && nextSquares.every((square) => square !== null)) {
       // Check for a tie only when all squares are filled and there is no winner
       setTies(ties + 1);
       setWinner("TIE"); // You can use any value to represent a tie in the state
     }
-
+    if ((winnerFound === "X") & (playerX === "P1")) {
+      setWinner("PLAYER 1 WINS!");
+    } else if ((winnerFound === "X") & (playerX === "P2")) {
+      setWinner("PLAYER 2 WINS!");
+    }
     setTurn(
       xIsNext ? (
         <img className="w-[16px] h-[16px]" src={smallZero} alt="x" />
@@ -86,7 +98,13 @@ function App() {
   function resetGame() {
     setSquares(Array(9).fill(null));
     setXIsNext(true);
-    setTurn(<img className="w-[16px] h-[16px]" src={smallX} alt="x" />);
+    setTurn(
+      <img
+        className="w-[16px] h-[16px]"
+        src={xIsNext ? smallX : smallZero}
+        alt={xIsNext ? "x" : "o"}
+      />
+    );
     setWinner(null);
   }
 
@@ -159,15 +177,13 @@ function App() {
             <span className=" text-[20px] font-bold">{countO}</span>
           </div>
         </div>
-        <div
-          className={`${
-            winner
-              ? `flex flex-col w-[375px] h-[228px] absolute top-[27%] bg-black`
-              : `hidden`
-          }`}
-        >
-          <span className=" text-white">Winner: {winner}</span>
-        </div>
+        <Winneralarm
+          winner={winner}
+          handleStartGame={handleStartGame}
+          winnerX={winnerX}
+          winnerO={winnerO}
+          tieAlarm={tieAlarm}
+        />
       </div>
       {/* {xIsNext && !winner && (
         <Computermove
@@ -191,3 +207,6 @@ function App() {
 }
 
 export default App;
+
+// როცა X იგებს countO არმუშაობს, ქრება საერთოდ და პირიქით
+// როცა რომელიმე იგებს და შემდეგ რაუნდზე გადავდივარ "XO" TAKES WIN იპრინტება ერთდროულად, ნაცვლად "X" TAKES WIN ან "O" TAKES WIN
