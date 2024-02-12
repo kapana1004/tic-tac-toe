@@ -46,15 +46,19 @@ function App() {
       setCountX(countX + 1);
       setWinnerX(true);
       setWinnerO(false);
+      setTieAlarm(false);
     } else if (winnerFound === "O") {
       setCountO(countO + 1);
       setWinnerO(true);
       setWinnerX(false);
+      setTieAlarm(false);
     } else if (!winnerFound && nextSquares.every((square) => square !== null)) {
       // Check for a tie only when all squares are filled and there is no winner
       setTies(ties + 1);
       setWinner("TIE"); // You can use any value to represent a tie in the state
       setTieAlarm(true);
+      setWinnerX(false);
+      setWinnerO(false);
     }
     if (winnerFound === "X" && playerX === "(P1)") {
       setWinner("PLAYER 1 WINS!");

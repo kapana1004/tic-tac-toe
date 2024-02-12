@@ -22,7 +22,11 @@ export default function Winneralarm({
         <span className={` ${tieAlarm ? `hidden` : `text-white text-[14px]`} `}>
           {winner}
         </span>
-        <div className=" flex flex-row w-[250px] justify-between items-center">
+        <div
+          className={`flex flex-row w-[250px] ${
+            tieAlarm ? `pl-[65px]` : null
+          }  justify-between items-center`}
+        >
           <img
             className={`${
               winnerX ? ` w-[30px] h-[30px] text-[#31C3BD]` : `hidden`
