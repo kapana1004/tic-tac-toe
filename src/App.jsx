@@ -112,6 +112,9 @@ function App() {
     resetGame();
     setStart(true);
   };
+  const quitHandle = () => {
+    window.location.reload();
+  };
 
   return (
     <>
@@ -183,6 +186,7 @@ function App() {
           winnerX={winnerX}
           winnerO={winnerO}
           tieAlarm={tieAlarm}
+          quitHandle={quitHandle}
         />
       </div>
       {/* {xIsNext && !winner && (
@@ -207,6 +211,3 @@ function App() {
 }
 
 export default App;
-
-// როცა X იგებს countO არმუშაობს, ქრება საერთოდ და პირიქით
-// როცა რომელიმე იგებს და შემდეგ რაუნდზე გადავდივარ "XO" TAKES WIN იპრინტება ერთდროულად, ნაცვლად "X" TAKES WIN ან "O" TAKES WIN
