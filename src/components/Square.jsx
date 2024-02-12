@@ -1,8 +1,8 @@
 import React from "react";
-import xImg from "../assets/Combined Shape Copy 2.png";
-import zeroImg from "../assets/Oval Copy.png";
+import xImg from "../../public/assets/Combined Shape Copy 2.png";
+import zeroImg from "../../public/assets/Oval Copy.png";
 
-export default function Square({ value, onSquareClick }) {
+export default function Square({ value, onSquareClick, zeroImg, xImg }) {
   return (
     <button
       onClick={onSquareClick}

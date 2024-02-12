@@ -1,6 +1,6 @@
 // ComputerMove.jsx
 import React, { useEffect } from "react";
-import smallX from "../assets/SmallX.png";
+import smallX from "../../public/assets/SmallX.png";
 
 const Computermove = ({
   squares,

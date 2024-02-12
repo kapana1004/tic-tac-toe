@@ -1,8 +1,8 @@
 import React from "react";
-import xImg from "../assets/Combined Shape Copy 2.png";
-import zeroImg from "../assets/Oval Copy.png";
-import smallX from "../assets/SmallX.png";
-import smallZero from "../assets/oval.png";
+import xImg from "../../public/assets/Combined Shape Copy 2.png";
+import zeroImg from "../../public/assets/Oval Copy.png";
+import smallX from "../../public/assets/SmallX.png";
+import smallZero from "../../public/assets/oval.png";
 
 export default function Entrygame({
   start,
@@ -11,6 +11,10 @@ export default function Entrygame({
   playerX,
   playerO,
   setPlayerX,
+  xImg,
+  zeroImg,
+  smallX,
+  smallZero,
 }) {
   const handleGameStart = () => {
     setStart(!start);

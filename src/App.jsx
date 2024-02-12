@@ -3,11 +3,11 @@ import Square from "./components/Square";
 import Entrygame from "./components/Entrygame";
 import Winneralarm from "./components/Winneralarm";
 // import Computermove from "./components/Comutermove";
-import xImg from "./assets/Combined Shape Copy 2.png";
-import zeroImg from "./assets/Oval Copy.png";
-import smallX from "./assets/SmallX.png";
-import smallZero from "./assets/oval.png";
-import Rotate from "./assets/Rotate.png";
+import xImg from "../public/assets/Combined Shape Copy 2.png";
+import zeroImg from "../public/assets/Oval Copy.png";
+import smallX from "../public/assets/SmallX.png";
+import smallZero from "../public/assets/Oval.png";
+import Rotate from "../public/assets/Rotate.png";
 
 function App() {
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -133,6 +133,10 @@ function App() {
         setPlayerO={setPlayerO}
         playerX={playerX}
         setPlayerX={setPlayerX}
+        xImg={xImg}
+        zeroImg={zeroImg}
+        smallX={smallX}
+        smallZero={smallZero}
       />
       <div
         className={` ${
@@ -159,19 +163,64 @@ function App() {
         </div>
         <div className="flex flex-col items-center mb-[32px]">
           <div className="flex gap-[20px] mb-[20px]">
-            <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-            <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-            <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+            <Square
+              value={squares[0]}
+              onSquareClick={() => handleClick(0)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
+            <Square
+              value={squares[1]}
+              onSquareClick={() => handleClick(1)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
+            <Square
+              value={squares[2]}
+              onSquareClick={() => handleClick(2)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
           </div>
           <div className="flex gap-[20px] mb-[20px]">
-            <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-            <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-            <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+            <Square
+              value={squares[3]}
+              onSquareClick={() => handleClick(3)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
+            <Square
+              value={squares[4]}
+              onSquareClick={() => handleClick(4)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
+            <Square
+              value={squares[5]}
+              onSquareClick={() => handleClick(5)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
           </div>
           <div className="flex gap-[20px]">
-            <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-            <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-            <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+            <Square
+              value={squares[6]}
+              onSquareClick={() => handleClick(6)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
+            <Square
+              value={squares[7]}
+              onSquareClick={() => handleClick(7)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
+            <Square
+              value={squares[8]}
+              onSquareClick={() => handleClick(8)}
+              zeroImg={zeroImg}
+              xImg={xImg}
+            />
           </div>
         </div>
         <div className="flex w-[328px] justify-between">
@@ -195,6 +244,8 @@ function App() {
           winnerO={winnerO}
           tieAlarm={tieAlarm}
           quitHandle={quitHandle}
+          xImg={xImg}
+          zeroImg={zeroImg}
         />
       </div>
       {/* {xIsNext && !winner && (
