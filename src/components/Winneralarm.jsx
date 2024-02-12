@@ -19,7 +19,9 @@ export default function Winneralarm({
       }`}
     >
       <div className=" w-[280px] h-[140px] flex flex-col justify-around items-center">
-        <span className=" text-white text-[14px]">Winner: {winner}</span>
+        <span className={` ${tieAlarm ? `hidden` : `text-white text-[14px]`} `}>
+          {winner}
+        </span>
         <div className=" flex flex-row w-[250px] justify-between items-center">
           <img
             className={`${
@@ -28,19 +30,25 @@ export default function Winneralarm({
             src={xImg}
             alt="X"
           />
-          <img
-            className={` ${
-              winnerO ? ` w-[30px] h-[30px] text-[#F2B137]` : `hidden`
-            }`}
-            src={zeroImg}
-            alt="O"
-          />
+          {tieAlarm ? null : (
+            <img
+              className={` ${
+                winnerO ? ` w-[30px] h-[30px] text-[#F2B137]` : `hidden`
+              }`}
+              src={zeroImg}
+              alt="O"
+            />
+          )}
           <span
             className={` ${
-              winnerX ? `text-[#31C3BD]` : ` text-[#F2B137]`
+              winnerX & !tieAlarm
+                ? `text-[#31C3BD]`
+                : tieAlarm
+                ? ` text-[#A8BFC9]`
+                : ` text-[#F2B137]`
             } text-[24px]`}
           >
-            TAKES THE ROUND
+            {tieAlarm ? `ROUND TIE` : `TAKES THE ROUND`}
           </span>
         </div>
 

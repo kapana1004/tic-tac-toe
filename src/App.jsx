@@ -40,8 +40,7 @@ function App() {
 
     const winnerFound = defineWinner(nextSquares);
     if (winnerFound) {
-      setWinner(playerX === "P1" ? "PLAYER 2 WINS!" : "PLAYER 1 WINS!");
-      console.log(playerX);
+      setWinner(playerX === "P1" ? "PLAYER 1 WINS!" : "PLAYER 2 WINS!");
     } // X როცა არის არჩეული player1-ად რატომ არენდერებს "PLAYER 1 WINS!"?
     if (winnerFound === "X") {
       setCountX(countX + 1);
@@ -55,12 +54,17 @@ function App() {
       // Check for a tie only when all squares are filled and there is no winner
       setTies(ties + 1);
       setWinner("TIE"); // You can use any value to represent a tie in the state
+      setTieAlarm(true);
     }
-    if ((winnerFound === "X") & (playerX === "P1")) {
+    if (winnerFound === "X" && playerX === "(P1)") {
       setWinner("PLAYER 1 WINS!");
-    } else if ((winnerFound === "X") & (playerX === "P2")) {
+    } else if (winnerFound === "X" && playerX === "(P2)") {
       setWinner("PLAYER 2 WINS!");
-    }
+    } else if (winnerFound === "O" && playerO === "(P1)") {
+      setWinner("PLAYER 1 WINS!");
+    } else if (winnerFound === "O" && playerO === "(P2)") {
+      setWinner("PLAYER 2 WINS!");
+    } // it doesn't work:(
     setTurn(
       xIsNext ? (
         <img className="w-[16px] h-[16px]" src={smallZero} alt="x" />

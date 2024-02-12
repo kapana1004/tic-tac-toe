@@ -4,7 +4,14 @@ import zeroImg from "../assets/Oval Copy.png";
 import smallX from "../assets/SmallX.png";
 import smallZero from "../assets/oval.png";
 
-export default function Entrygame({ start, setStart, setPlayerO, setPlayerX }) {
+export default function Entrygame({
+  start,
+  setStart,
+  setPlayerO,
+  playerX,
+  playerO,
+  setPlayerX,
+}) {
   const handleGameStart = () => {
     setStart(!start);
   };
@@ -37,13 +44,17 @@ export default function Entrygame({ start, setStart, setPlayerO, setPlayerX }) {
         <div className=" flex w-[279px] h-[72px] mt-[20px] bg-[#1A2A33] rounded-[10px] justify-around items-center ">
           <div
             onClick={handlePlayerXStart}
-            className=" flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#31C3BD] cursor-pointer "
+            className={`flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#31C3BD] cursor-pointer ${
+              playerX === "(P1)" ? ` bg-[#31C3BD]` : null
+            }`}
           >
             <img className=" w-[32px] h-[32px]" src={smallX} alt="x" />
           </div>
           <div
             onClick={handlePlayerOStart}
-            className=" flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#F2B137] cursor-pointer"
+            className={`flex justify-center items-center w-[132px] h-[54px] rounded-[5px] hover:bg-[#F2B137] cursor-pointer ${
+              playerO === "(P1)" ? `bg-[#F2B137]` : null
+            }`}
           >
             <img className=" w-[32px] h-[32px]" src={smallZero} alt="" />
           </div>
