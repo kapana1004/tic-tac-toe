@@ -1,8 +1,8 @@
 import React from "react";
-import xImg from "../../public/assets/Combined Shape Copy 2.png";
-import zeroImg from "../../public/assets/Oval Copy.png";
-import smallX from "../../public/assets/SmallX.png";
-import smallZero from "../../public/assets/oval.png";
+// import xImg from "../../public/assets/Combined Shape Copy 2.png";
+// import zeroImg from "../../public/assets/Oval Copy.png";
+// import smallX from "../../public/assets/SmallX.png";
+// import smallZero from "../../public/assets/oval.png";
 
 export default function Entrygame({
   start,
@@ -15,7 +15,15 @@ export default function Entrygame({
   zeroImg,
   smallX,
   smallZero,
+  setAgainst,
 }) {
+  const handleCpuStart = () => {
+    setStart(!start);
+    setPlayerX("(YOU)");
+    // setPlayerO(playerX === "(P1)" ? "(CPU) (O)" : "(CPU) (X)");
+    setPlayerO("(CPU)");
+    setAgainst("cpu");
+  };
   const handleGameStart = () => {
     setStart(!start);
   };
@@ -69,7 +77,10 @@ export default function Entrygame({
         </span>
       </div>
 
-      <button className=" flex w-[327px] h-[56px] bg-[#F2B137] hover:bg-[#FFC860] cursor-pointer rounded-[10px] mt-[30px] justify-center items-center">
+      <button
+        onClick={handleCpuStart}
+        className=" flex w-[327px] h-[56px] bg-[#F2B137] hover:bg-[#FFC860] cursor-pointer rounded-[10px] mt-[30px] justify-center items-center"
+      >
         {" "}
         <span className=" font-bold">NEW GAME (VS CPU)</span>
       </button>
