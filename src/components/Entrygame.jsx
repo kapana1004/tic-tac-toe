@@ -16,6 +16,7 @@ export default function Entrygame({
   smallX,
   smallZero,
   setAgainst,
+  setcpuPlayer,
 }) {
   const handleCpuStart = () => {
     setStart(!start);
@@ -30,10 +31,12 @@ export default function Entrygame({
   const handlePlayerXStart = () => {
     setPlayerX("(P1)");
     setPlayerO("(P2)");
+    setcpuPlayer(true);
   };
   const handlePlayerOStart = () => {
     setPlayerX("(P2)");
     setPlayerO("(P1)");
+    setcpuPlayer(false);
   };
   return (
     <div

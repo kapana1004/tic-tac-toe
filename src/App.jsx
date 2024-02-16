@@ -25,6 +25,7 @@ function App() {
   const [winnerO, setWinnerO] = useState(false);
   const [tieAlarm, setTieAlarm] = useState(false);
   const [against, setAgainst] = useState("");
+  const [cpuPlayer, setcpuPlayer] = useState(true);
 
   const calculateCPUMove = () => {
     const availableSquares = squares.reduce((acc, curr, index) => {
@@ -144,9 +145,17 @@ function App() {
       handleClick(calculateCPUMove());
     };
 
-    if (against === "cpu" && !xIsNext && !winner) {
-      const timeoutId = setTimeout(makeCPUMove, 500);
-
+    if (against === "cpu" && cpuPlayer && !xIsNext && !winner) {
+      const timeoutId = setTimeout(() => {
+        makeCPUMove();
+        // setXIsNext(false);
+      }, 500);
+      return () => clearTimeout(timeoutId);
+    } else if (against === "cpu" && !cpuPlayer && xIsNext && !winner) {
+      const timeoutId = setTimeout(() => {
+        makeCPUMove();
+        setXIsNext(false);
+      }, 500);
       return () => clearTimeout(timeoutId);
     }
   }, [xIsNext, against, winner]);
@@ -166,6 +175,8 @@ function App() {
         smallZero={smallZero}
         against={against}
         setAgainst={setAgainst}
+        cpuPlayer={cpuPlayer}
+        setcpuPlayer={setcpuPlayer}
       />
       <div
         className={` ${
