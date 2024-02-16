@@ -17,12 +17,13 @@ export default function Entrygame({
   smallZero,
   setAgainst,
   setcpuPlayer,
+  cpuPlayer,
 }) {
   const handleCpuStart = () => {
     setStart(!start);
-    setPlayerX("(YOU)");
+    setPlayerX(cpuPlayer ? "(YOU)" : "(CPU)");
     // setPlayerO(playerX === "(P1)" ? "(CPU) (O)" : "(CPU) (X)");
-    setPlayerO("(CPU)");
+    setPlayerO(cpuPlayer ? "(CPU)" : "(YOU)");
     setAgainst("cpu");
   };
   const handleGameStart = () => {

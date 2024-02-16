@@ -84,6 +84,14 @@ function App() {
       setWinner("PLAYER 1 WINS!");
     } else if (winnerFound === "O" && playerO === "(P2)") {
       setWinner("PLAYER 2 WINS!");
+    } else if (winnerFound === "X" && playerX === "(CPU)") {
+      setWinner("CPU WINS!");
+    } else if (winnerFound === "X" && playerX === "(YOU)") {
+      setWinner("YOU WIN!");
+    } else if (winnerFound === "O" && playerO === "(CPU)") {
+      setWinner("CPU WINS!");
+    } else if (winnerFound === "O" && playerO === "(YOU)") {
+      setWinner("YOU WIN!");
     }
     setTurn(
       xIsNext ? (
