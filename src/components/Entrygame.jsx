@@ -53,7 +53,7 @@ export default function Entrygame({
         <img className=" w-[32px] h-[32px]" src={zeroImg} alt="O" />
       </div>
 
-      <div className=" flex w-[327px] h-[205px]  bg-[#1F3641] rounded-[10px] flex-col items-center">
+      <div className=" entry flex w-[327px] h-[205px]  bg-[#1F3641] rounded-[10px] flex-col items-center">
         <span className="  text-[#A8BFC9] mt-[20px] ">
           PICK PLAYER 1’S MARK
         </span>
@@ -83,14 +83,14 @@ export default function Entrygame({
 
       <button
         onClick={handleCpuStart}
-        className=" flex w-[327px] h-[56px] bg-[#F2B137] hover:bg-[#FFC860] cursor-pointer rounded-[10px] mt-[30px] justify-center items-center"
+        className=" btn-spu flex w-[327px] h-[56px] bg-[#F2B137] hover:bg-[#FFC860] cursor-pointer rounded-[10px] mt-[30px] justify-center items-center  "
       >
         {" "}
         <span className=" font-bold">NEW GAME (VS CPU)</span>
       </button>
       <button
         onClick={handleGameStart}
-        className=" flex w-[327px] h-[56px] bg-[#31C3BD] hover:bg-[#65E9E4] cursor-pointer rounded-[10px] mt-[17px] justify-center items-center"
+        className=" btn-player flex w-[327px] h-[56px] bg-[#31C3BD] hover:bg-[#65E9E4] cursor-pointer rounded-[10px] mt-[17px] justify-center items-center"
       >
         {" "}
         <span className=" font-bold">NEW GAME (VS PLAYER)</span>

@@ -194,17 +194,17 @@ function App() {
         } `}
       >
         <div className="flex mt-[24px] mb-[64px] bg-[#1A2A33] w-[327px] h-[40px] justify-between">
-          <div className="flex flex-row w-[72px] h-[32px] justify-between">
+          <div className=" flex flex-row w-[72px] h-[32px] justify-between">
             <img src={xImg} alt="X" />
             <img src={zeroImg} alt="0" />
           </div>
-          <div className="flex flex-row justify-around items-center w-[96px] h-[40px] rounded-[5px] bg-[#1F3641]">
+          <div className=" turn flex flex-row justify-around items-center w-[96px] h-[40px] rounded-[5px] bg-[#1F3641]">
             <span>{turn}</span>
             <span className="text-[#A8BFC9] text-[14px] font-bold">TURN</span>
           </div>
           <div
             onClick={handleStartGame}
-            className="flex justify-center items-center bg-[#A8BFC9] w-[40px] h-[40px] cursor-pointer rounded-[5px]"
+            className=" rotate flex justify-center items-center bg-[#A8BFC9] w-[40px] h-[40px] cursor-pointer rounded-[5px]"
           >
             <img src={Rotate} alt="" />
           </div>

@@ -61,13 +61,13 @@ export default function Winneralarm({
         <div className=" flex flex-row w-[238px] h-[52px] justify-between ">
           <button
             onClick={quitHandle}
-            className=" w-[75px] rounded-[10px] bg-[#A8BFC9]"
+            className=" quit w-[75px] rounded-[10px] bg-[#A8BFC9]"
           >
             QUIT
           </button>
           <button
             onClick={handleStartGame}
-            className=" bg-[#F2B137] w-[146px] cursor-pointer rounded-[10px]"
+            className=" next bg-[#F2B137] w-[146px] cursor-pointer rounded-[10px]"
           >
             NEXT ROUND
           </button>
